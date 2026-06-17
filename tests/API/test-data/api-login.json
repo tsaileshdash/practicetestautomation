@@ -1,0 +1,119 @@
+{
+  "baseUrl": "https://practicetestautomation.com/practice-test-login/",
+  "getScenarios": [
+    {
+      "id": "get-01",
+      "description": "retrieve login page",
+      "path": "",
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Test login", "Username", "Password", "Submit"]
+    },
+    {
+      "id": "get-02",
+      "description": "invalid login page path returns 404",
+      "path": "invalid-endpoint",
+      "expectedStatus": 404,
+      "expectedBodyContains": ["Not Found", "404"]
+    }
+  ],
+  "postScenarios": [
+    {
+      "id": "post-01",
+      "description": "valid credentials",
+      "data": { "username": "student", "password": "Password123" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Log out", "Congratulations"]
+    },
+    {
+      "id": "post-02",
+      "description": "invalid username",
+      "data": { "username": "wronguser", "password": "Password123" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your username is invalid!"]
+    },
+    {
+      "id": "post-03",
+      "description": "invalid password",
+      "data": { "username": "student", "password": "wrongpass" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your password is invalid!"]
+    },
+    {
+      "id": "post-04",
+      "description": "empty username",
+      "data": { "username": "", "password": "Password123" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your username is invalid!", "Your password is invalid!"]
+    },
+    {
+      "id": "post-05",
+      "description": "empty password",
+      "data": { "username": "student", "password": "" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your password is invalid!"]
+    },
+    {
+      "id": "post-06",
+      "description": "both fields empty",
+      "data": { "username": "", "password": "" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your username is invalid!", "Your password is invalid!"]
+    },
+    {
+      "id": "post-07",
+      "description": "username with wrong case",
+      "data": { "username": "Student", "password": "Password123" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your username is invalid!"]
+    },
+    {
+      "id": "post-08",
+      "description": "password with wrong case",
+      "data": { "username": "student", "password": "password123" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your password is invalid!"]
+    },
+    {
+      "id": "post-09",
+      "description": "leading/trailing spaces in username",
+      "data": { "username": " student ", "password": "Password123" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your username is invalid!"]
+    },
+    {
+      "id": "post-10",
+      "description": "leading/trailing spaces in password",
+      "data": { "username": "student", "password": " Password123 " },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your password is invalid!"]
+    },
+    {
+      "id": "post-11",
+      "description": "SQL injection attempt in username",
+      "data": { "username": "student' OR '1'='1", "password": "Password123" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your username is invalid!"]
+    },
+    {
+      "id": "post-12",
+      "description": "long username value",
+      "data": { "username": "studentstudentstudentstudentstudentstudent", "password": "Password123" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your username is invalid!"]
+    },
+    {
+      "id": "post-13",
+      "description": "special characters in password",
+      "data": { "username": "student", "password": "P@ssw0rd!" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your password is invalid!"]
+    },
+    {
+      "id": "post-14",
+      "description": "special characters in username",
+      "data": { "username": "stu!dent", "password": "Password123" },
+      "expectedStatus": 200,
+      "expectedBodyContains": ["Your username is invalid!"]
+    }
+  ]
+}

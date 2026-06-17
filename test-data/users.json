@@ -1,0 +1,100 @@
+[
+  {
+    "id": "user-01",
+    "description": "valid credentials (student)",
+    "username": "student",
+    "password": "Password123",
+    "expected": "success"
+  },
+  {
+    "id": "user-02",
+    "description": "invalid username",
+    "username": "wronguser",
+    "password": "Password123",
+    "expected": "failure"
+  },
+  {
+    "id": "user-03",
+    "description": "invalid password",
+    "username": "student",
+    "password": "wrongpass",
+    "expected": "failure"
+  },
+  {
+    "id": "user-04",
+    "description": "empty username",
+    "username": "",
+    "password": "Password123",
+    "expected": "failure"
+  },
+  {
+    "id": "user-05",
+    "description": "empty password",
+    "username": "student",
+    "password": "",
+    "expected": "failure"
+  },
+  {
+    "id": "user-06",
+    "description": "username wrong case",
+    "username": "Student",
+    "password": "Password123",
+    "expected": "failure"
+  },
+  {
+    "id": "user-07",
+    "description": "password wrong case",
+    "username": "student",
+    "password": "password123",
+    "expected": "failure"
+  },
+  {
+    "id": "user-08",
+    "description": "leading/trailing spaces in username",
+    "username": " student ",
+    "password": "Password123",
+    "expected": "failure"
+  },
+  {
+    "id": "user-09",
+    "description": "leading/trailing spaces in password",
+    "username": "student",
+    "password": " Password123 ",
+    "expected": "failure"
+  },
+  {
+    "id": "user-10",
+    "description": "both fields empty",
+    "username": "",
+    "password": "",
+    "expected": "failure"
+  },
+  {
+    "id": "user-11",
+    "description": "SQL injection style username",
+    "username": "student' OR '1'='1",
+    "password": "Password123",
+    "expected": "failure"
+  },
+  {
+    "id": "user-12",
+    "description": "long username value",
+    "username": "studentstudentstudentstudentstudentstudentstudentstudent",
+    "password": "Password123",
+    "expected": "failure"
+  },
+  {
+    "id": "user-13",
+    "description": "special characters in password",
+    "username": "student",
+    "password": "P@ssw0rd!",
+    "expected": "failure"
+  },
+  {
+    "id": "user-14",
+    "description": "special characters in username",
+    "username": "stu!dent",
+    "password": "Password123",
+    "expected": "failure"
+  }
+]
