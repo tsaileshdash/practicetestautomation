@@ -8,9 +8,13 @@ module.exports = {
     viewport: { width: 1280, height: 720 }
   },
  reporter: [
-  ['list'],
-  ['allure-playwright', {
-    outputFolder: 'allure-results'
-  }]
-]
+    ['list'],
+    ['allure-playwright', {
+      outputFolder: 'allure-results'
+    }],
+    ['html', {
+      outputFolder: 'playwright-report',
+      open: 'never'
+    }]
+  ]
 };
