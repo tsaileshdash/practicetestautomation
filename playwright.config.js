@@ -7,5 +7,8 @@ module.exports = {
     headless: true,
     viewport: { width: 1280, height: 720 }
   },
-  reporter: [['list'], ['allure-playwright']]
+  reporter: [
+  ['list'],
+  ['allure-playwright']
+]
 };
