@@ -11,10 +11,6 @@ module.exports = {
     ['list'],
     ['allure-playwright', {
       outputFolder: 'allure-results'
-    }],
-    ['html', {
-      outputFolder: 'playwright-report',
-      open: 'never'
     }]
   ]
 };
