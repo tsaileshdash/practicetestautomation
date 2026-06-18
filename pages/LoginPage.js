@@ -12,14 +12,18 @@ class LoginPage {
   }
 
   async goto() {
-    await this.page.goto(this.url);
+    await this.page.goto(this.url, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    await this.page.waitForSelector('input#username, input[name="username"]', { timeout: 30000 });
+    await this.page.waitForSelector('input#password, input[name="password"]', { timeout: 30000 });
   }
 
   async login(username, password) {
+    await this.usernameInput.waitFor({ state: 'visible', timeout: 30000 });
     await this.usernameInput.fill(username ?? '');
+    await this.passwordInput.waitFor({ state: 'visible', timeout: 30000 });
     await this.passwordInput.fill(password ?? '');
-    await this.submitButton.click();
-    await this.page.waitForLoadState('networkidle');
+    await this.submitButton.waitFor({ state: 'visible', timeout: 30000 });
+    await this.submitButton.click({ timeout: 30000 });
   }
 
   getErrorMessage() {

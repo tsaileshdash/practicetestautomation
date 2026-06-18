@@ -42,7 +42,7 @@ pipeline {
                 script {
                     echo 'Running Playwright tests with Allure reporter...'
                     sh '''
-                        npm test -- --reporter=list
+                        npx playwright test --workers=1 --timeout=60000 --reporter=list
                     '''
                 }
             }
